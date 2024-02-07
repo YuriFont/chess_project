@@ -1,5 +1,7 @@
 package boardgame;
 
+import chess.ChessPiece;
+
 public class Board
 {
 	private int rows;
@@ -42,5 +44,20 @@ public class Board
 	{
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
+	}
+
+	private boolean positionExists(int row, int column)
+	{
+		return ((row >= 0 && row < rows) && (columns >= 0 && column < columns));
+	}
+
+	public boolean positionExists(Position position)
+	{
+		return (positionExists(position.getRow(), position.getColumn()));
+	}
+
+	public boolean thereIsAPiece(Position position)
+	{
+		return (piece(position) != null);
 	}
 }
